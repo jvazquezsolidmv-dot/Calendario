@@ -1,0 +1,76 @@
+GESTIÓN DE JORNADA Y CALENDARIO
+
+1. Abra siempre Abrir_Aplicacion.cmd. Este inicia la aplicación local y permite
+   seleccionar correctamente nombres y carpetas de destino.
+   La cabecera azul y las pestañas permanecen fijas. Solo se desplaza el área
+   inferior que contiene registros, calendarios y resúmenes.
+2. Entre en “Datos personales y empresa” y revise nombre, DNI, NAF,
+   empresa, CIF, CCC y código de la plantilla.
+3. Use “Registro mensual” para introducir entradas, salidas y comentarios.
+   También puede pulsar “Añadir registro” para cargar o corregir un día completo
+   mediante un único formulario. Antes de guardar se muestra el cálculo previsto.
+   “Crear nuevo ODS desde xxxxxxxxxxx.ods” copia siempre la plantilla maestra
+   guardada en plantillas/xxxxxxxxxxx.ods y propone automáticamente el nombre
+   completo del nuevo registro. El nombre puede corregirse antes de guardar y la
+   plantilla maestra nunca se modifica.
+   La barra lateral derecha agrupa las acciones del mes. La flecha superior abre
+   el mes anterior y la inferior abre el siguiente, actualizando jornada,
+   registros, resumen y cálculos.
+4. En “Calendario anual” se utiliza el mismo sistema lateral: la flecha superior
+   abre el año anterior y la inferior el siguiente. El resumen cambia al mismo
+   año y las acciones de impresión y festivos quedan agrupadas en ese lateral.
+5. Use “Calendario anual” para clasificar vacaciones, bajas, permisos,
+   descansos compensados y días de reducción.
+6. “Resumen general” calcula horas físicas, acreditadas, extra semanal,
+   vacaciones, consumo y saldo de bolsa.
+7. Los botones de impresión abren el registro mensual o el calendario anual
+   directamente con OpenOffice o LibreOffice.
+   En la ventana de impresión puede elegir “Guardar como PDF”.
+9. Use “Guardar copia” regularmente. El archivo JSON generado permite recuperar
+   todos los datos mediante “Importar copia”.
+
+Los datos se guardan únicamente en el navegador del equipo. Si se borran los
+datos del navegador, se perderán salvo que exista una copia JSON.
+
+ESTRUCTURA DE DATOS DEL PROYECTO
+- archivo/AÑO/calendarios_anuales: calendarios .ods originales.
+- archivo/AÑO/registros_mensuales: registros mensuales .ods originales.
+- datos/procesados: extracción histórica utilizada por la aplicación.
+- documentacion: resumen Excel validado e informe explicativo Word.
+- historical-data.js: histórico cargado automáticamente por el programa.
+- authoritative-summary.js: resultados mensuales reconciliados y totalizador.
+
+Las nuevas modificaciones se guardan en el navegador. Utilice “Guardar copia”
+y elija la carpeta datos del proyecto cuando Windows pregunte dónde guardar. El
+navegador recuerda por separado la última carpeta de documentos y de copias.
+
+IMPRESIÓN
+- “Abrir / imprimir ODS exacto” abre con OpenOffice/LibreOffice el archivo
+  original correspondiente y
+  conserva al 100 % su formato, márgenes, celdas, firmas y zonas de impresión.
+- “Vista imprimible HTML” genera una vista rápida desde el navegador, pero no
+  sustituye al ODS cuando se necesita reproducir exactamente la plantilla.
+- Los cambios introducidos en el HTML se calculan y guardan en la aplicación;
+  no modifican automáticamente los ODS históricos originales.
+
+ACTUALIZACIÓN DE CÁLCULOS
+- Cada registro nuevo o corrección queda marcado como modificación del histórico.
+- El programa mantiene el resultado mensual validado como base y aplica la
+  diferencia de la edición a horas físicas, acreditadas, extra y bolsa.
+- El saldo mensual, anual y acumulado se actualiza después de cada registro.
+- Si en la observación se escribe “baja”, “vacaciones”, “reducción”,
+  “compensado”, “hospitalización”, “ingreso” u “operación”, el programa aplica
+  automáticamente la clasificación, el color y el cómputo correspondientes
+  cuando no se ha elegido otra clasificación específica.
+
+JORNADA Y REDUCCIÓN MENSUAL
+- Cada mes puede definir sus horas semanales entre 0 y 40 y su reparto de
+  lunes a domingo.
+- La suma de las horas diarias debe coincidir con el total semanal.
+- El porcentaje se calcula automáticamente tomando 40 horas como el 100 %.
+- Un mes nuevo hereda inicialmente el reparto del último mes configurado.
+- Solo es necesario guardar otra configuración cuando cambien las horas o el
+  reparto. Los días laborables con 0 horas se muestran en morado.
+
+El nombre de impresión del registro se compone así:
+AAAA-MM_Nombre_Apellidos·DNI@NAF_CódigoPlantilla

@@ -1,0 +1,9 @@
+Los datos históricos están integrados en los archivos del proyecto.
+
+Las nuevas entradas realizadas en la aplicación se guardan automáticamente
+en el navegador de este ordenador.
+
+Para crear una copia física:
+1. Pulse "Guardar copia" en la parte superior de la aplicación.
+2. Seleccione esta carpeta "datos" como destino.
+3. Para recuperar la copia, utilice "Importar copia".
